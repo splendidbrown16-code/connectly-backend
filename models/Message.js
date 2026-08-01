@@ -5,36 +5,27 @@ const messageSchema = new mongoose.Schema(
     conversation: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Conversation",
-      required: true
+      required: true,
     },
 
     sender: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true
+      required: true,
     },
 
     text: {
       type: String,
+      required: true,
       trim: true,
-      default: ""
     },
-
-    messageType: {
-      type: String,
-      enum: ["text", "image", "voice", "file"],
-      default: "text"
-    },
-
-    status: {
-      type: String,
-      enum: ["sent", "delivered", "read"],
-      default: "sent"
-    }
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 
-module.exports = mongoose.model("Message", messageSchema);
+module.exports = mongoose.model(
+  "Message",
+  messageSchema
+);
